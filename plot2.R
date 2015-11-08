@@ -1,4 +1,4 @@
-#plot 2 
+# plot 2 
 # essentially, global active power by hour
 
 file_url <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
@@ -10,7 +10,7 @@ library(data.table)
 # if(!file.exists("/Data/householdpower.zip")) {download.file(file_url, "./Data/householdpower.zip")}
 # unzip("./Data/householdpower.zip", exdir = "./Data")
 
-## power <- fread("household_power_consumption.txt", na.strings ="?")
+## power <- fread("./Data/household_power_consumption.txt", na.strings ="?")
 
 
 ##I'm not 100% sure why interval behaves this way...but it works: 

@@ -1,5 +1,4 @@
-#plot 1 
-# essentially, global active power by hour
+# plot 4
 
 file_url <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2Fhousehold_power_consumption.zip"
 
@@ -7,7 +6,7 @@ library(lubridate)
 library(data.table)
 
 # if(!dir.exists("./Data")) {dir.create("./Data")}
-# if(!file.exists("/Data/householdpower.zip")) {download.file(file_url, "./Data/householdpower.zip")}
+# if(!dir.exists("/Data/householdpower.zip")) {download.file(file_url, "./Data/householdpower.zip")}
 # unzip("./Data/householdpower.zip", exdir = "./Data")
 
 ## power <- fread("./Data/household_power_consumption.txt", na.strings ="?")
@@ -22,9 +21,17 @@ power_sub <- power[power$Date %within% interval]
 ##this lovely gem is from Al Warren on the class forums:
 power_sub$Date<- ymd_hms(paste(power_sub$Date, power_sub$Time))
 
-## open file cnxn, plot it, close it!
-png(filename="plot1.png")
-hist(power_sub$Global_active_power, col="red")
+png(filename="plot4.png")
+par(mfrow = c(2,2), mar = c(4,4,2,1))
+
+with(power_sub, {
+  plot(Global_active_power ~ Date, type="l")
+  plot(Voltage ~ Date, type="l")
+  plot.new()
+    points(Sub_metering_3 ~ Date, col="blue", type = "l")
+    points(Sub_metering_2 ~ Date, col="red", type = "l")
+    points(Sub_metering_1 ~ Date, col="black", type = "l")
+  plot(Global_reactive_power ~ Date, type="l")
+})
+
 dev.off()
-
-
