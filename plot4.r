@@ -27,9 +27,9 @@ par(mfrow = c(2,2), mar = c(4,4,2,1))
 with(power_sub, {
   plot(Global_active_power ~ Date, type="l")
   plot(Voltage ~ Date, type="l")
-  plot(Sub_metering_3 ~ Date, col="blue", type = "l")
+  plot(Sub_metering_1 ~ Date, col="black", type = "l")
     points(Sub_metering_2 ~ Date, col="red", type = "l")
-    points(Sub_metering_1 ~ Date, col="black", type = "l")
+    points(Sub_metering_3 ~ Date, col="blue", type = "l")
   plot(Global_reactive_power ~ Date, type="l")
 })
 
