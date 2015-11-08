@@ -24,7 +24,8 @@ power_sub$Date<- ymd_hms(paste(power_sub$Date, power_sub$Time))
 
 ## open file cnxn, plot it, close it!
 png(filename="plot1.png")
-hist(power_sub$Global_active_power, col="red")
+hist(power_sub$Global_active_power, col="red", main="Global Active Power",
+     xlab = "Global Active Power in Kilowatts")
 dev.off()
 
 

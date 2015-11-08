@@ -25,8 +25,10 @@ power_sub$Date<- ymd_hms(paste(power_sub$Date, power_sub$Time))
 ## open file cnxn, plot it, close it!
 png(filename="plot3.png")
 with (power_sub, {
-  plot(Sub_metering_1 ~ Date, col="black", type = "l")
+  plot(Sub_metering_1 ~ Date, col="black", type = "l", ylab = "Sub metering")
   points(Sub_metering_2 ~ Date, col="red", type = "l")
   points(Sub_metering_3 ~ Date, col="blue", type = "l")
+  legend("topright", pch = "-", col = c("black", "red", "blue"), 
+         legend = c("Kitchen", "Laundry", "Heat/AC"))
 })
 dev.off()

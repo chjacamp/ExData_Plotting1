@@ -25,11 +25,14 @@ png(filename="plot4.png")
 par(mfrow = c(2,2), mar = c(4,4,2,1))
 
 with(power_sub, {
-  plot(Global_active_power ~ Date, type="l")
+  plot(Global_active_power ~ Date, type="l",
+       ylab = "Global Active Power in Kilowatts")
   plot(Voltage ~ Date, type="l")
-  plot(Sub_metering_1 ~ Date, col="black", type = "l")
+  plot(Sub_metering_1 ~ Date, col="black", type = "l", ylab = "Sub metering")
     points(Sub_metering_2 ~ Date, col="red", type = "l")
     points(Sub_metering_3 ~ Date, col="blue", type = "l")
+    legend("topright", pch = "-", col = c("black", "red", "blue"), 
+         legend = c("Kitchen", "Laundry", "Heat/AC"))
   plot(Global_reactive_power ~ Date, type="l")
 })
 
